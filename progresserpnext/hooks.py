@@ -83,7 +83,7 @@ app_license = "gpl-3.0"
 # ------------
 
 # before_install = "progresserpnext.install.before_install"
-# after_install = "progresserpnext.install.after_install"
+after_install = "progresserpnext.install.after_install"
 
 # Uninstallation
 # ------------
