@@ -139,16 +139,36 @@ after_install = "progresserpnext.install.after_install"
 
 doc_events = {
 	"Quotation": {
-		"validate": "progresserpnext.custom.utils.validate_parent_line_idx",
+		"validate": [
+			"progresserpnext.custom.utils.validate_parent_line_idx",
+		],
 	},
 	"Sales Order": {
-		"validate": "progresserpnext.custom.utils.validate_parent_line_idx",
+		"validate": [
+			"progresserpnext.custom.utils.validate_parent_line_idx",
+			"progresserpnext.custom.sales_order.validate",
+		],
+		"before_save": [
+			"progresserpnext.custom.sales_order.before_save",
+		],
 	},
 	"Sales Invoice": {
-		"validate": "progresserpnext.custom.utils.validate_parent_line_idx",
+		"validate": [
+			"progresserpnext.custom.utils.validate_parent_line_idx",
+			"progresserpnext.custom.sales_invoice.validate",
+		],
+		"before_save": [
+			"progresserpnext.custom.sales_invoice.before_save",
+		],
 	},
 	"Delivery Note": {
-		"validate": "progresserpnext.custom.utils.validate_parent_line_idx",
+		"validate": [
+			"progresserpnext.custom.utils.validate_parent_line_idx",
+			"progresserpnext.custom.delivery_note.validate",
+		],
+		"before_save": [
+			"progresserpnext.custom.delivery_note.before_save",
+		],
 	},
 }
 
