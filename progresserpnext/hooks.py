@@ -137,13 +137,20 @@ after_install = "progresserpnext.install.after_install"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Quotation": {
+		"validate": "progresserpnext.custom.utils.validate_parent_line_idx",
+	},
+	"Sales Order": {
+		"validate": "progresserpnext.custom.utils.validate_parent_line_idx",
+	},
+	"Sales Invoice": {
+		"validate": "progresserpnext.custom.utils.validate_parent_line_idx",
+	},
+	"Delivery Note": {
+		"validate": "progresserpnext.custom.utils.validate_parent_line_idx",
+	},
+}
 
 # Scheduled Tasks
 # ---------------
