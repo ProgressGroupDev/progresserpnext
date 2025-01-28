@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: progresserpnext VERSION\n"
 "Report-Msgid-Bugs-To: info@progress-psd.com\n"
-"POT-Creation-Date: 2025-01-28 19:52+0053\n"
+"POT-Creation-Date: 2025-01-28 21:05+0053\n"
 "PO-Revision-Date: 2025-01-28 19:52+0053\n"
 "Last-Translator: info@progress-psd.com\n"
 "Language: it\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.13.1\n"
 
-#: progresserpnext/custom_fields.py:48
+#: progresserpnext/custom_fields.py:49
 msgid "Building"
 msgstr "Edificio"
 
@@ -30,7 +30,7 @@ msgstr "È un contenitore"
 msgid "Is Element"
 msgstr "È un elemento"
 
-#: progresserpnext/custom_fields.py:42
+#: progresserpnext/custom_fields.py:43
 msgid "Is Inclusive"
 msgstr "È incluso"
 
@@ -38,19 +38,38 @@ msgstr "È incluso"
 msgid "Parent Line Index"
 msgstr "Indice di livello superiore"
 
+#: progresserpnext/custom/utils.py:21
+msgid "Parent line index must not be greater than the number of rows."
+msgstr "L'indice di livello superiore non deve essere maggiore del numero di righe."
+
+#: progresserpnext/custom/utils.py:24
+msgid "Parent line index must not be the same as the current line index."
+msgstr "L'indice di livello superiore non deve essere uguale all'indice della riga corrente."
+
 #: progresserpnext/custom_fields.py:25
 msgid "Project"
 msgstr ""
 
-#: progresserpnext/custom_fields.py:62
+#: progresserpnext/custom_fields.py:63
 msgid "Quotation"
 msgstr ""
 
-#: progresserpnext/custom_fields.py:73 progresserpnext/custom_fields.py:84
+#: progresserpnext/custom_fields.py:74 progresserpnext/custom_fields.py:85
 msgid "Sales Order"
 msgstr ""
 
-#: progresserpnext/custom_fields.py:54
+#: progresserpnext/custom_fields.py:55
 msgid "Section"
 msgstr "Sezione"
 
+#: progresserpnext/custom/delivery_note.py:21
+msgid "The rows of this delivery note are linked to different sales orders. Please link only one sales order."
+msgstr "Le righe di questo documento di consegna sono collegate a diversi ordini di vendita. Si prega di collegare solo un ordine di vendita."
+
+#: progresserpnext/custom/sales_invoice.py:21
+msgid "The rows of this sales invoice are linked to different sales orders. Please link only one sales order."
+msgstr "Le righe di questa fattura sono collegate a diversi ordini di vendita. Si prega di collegare solo un ordine di vendita."
+
+#: progresserpnext/custom/sales_order.py:21
+msgid "The rows of this sales order are linked to different quotations. Please link only one quotation."
+msgstr "Le righe di questo ordine di vendita sono collegate a diversi preventivi. Si prega di collegare solo un preventivo."

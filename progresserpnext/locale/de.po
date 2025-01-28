@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: progresserpnext VERSION\n"
 "Report-Msgid-Bugs-To: info@progress-psd.com\n"
-"POT-Creation-Date: 2025-01-28 19:52+0053\n"
+"POT-Creation-Date: 2025-01-28 21:05+0053\n"
 "PO-Revision-Date: 2025-01-28 19:52+0053\n"
 "Last-Translator: info@progress-psd.com\n"
 "Language: de\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.13.1\n"
 
-#: progresserpnext/custom_fields.py:48
+#: progresserpnext/custom_fields.py:49
 msgid "Building"
 msgstr "Gebäude"
 
@@ -30,7 +30,7 @@ msgstr "Ist Container"
 msgid "Is Element"
 msgstr "Ist Element"
 
-#: progresserpnext/custom_fields.py:42
+#: progresserpnext/custom_fields.py:43
 msgid "Is Inclusive"
 msgstr "Ist Inklusiv"
 
@@ -38,19 +38,39 @@ msgstr "Ist Inklusiv"
 msgid "Parent Line Index"
 msgstr "Index der übergeordneten Position"
 
+#: progresserpnext/custom/utils.py:21
+msgid "Parent line index must not be greater than the number of rows."
+msgstr "Index der übergeordneten Position darf nicht größer sein als die Anzahl der Zeilen."
+
+#: progresserpnext/custom/utils.py:24
+msgid "Parent line index must not be the same as the current line index."
+msgstr "Index der übergeordneten Position darf nicht mit dem Index der aktuellen Zeile übereinstimmen."
+
 #: progresserpnext/custom_fields.py:25
 msgid "Project"
 msgstr ""
 
-#: progresserpnext/custom_fields.py:62
+#: progresserpnext/custom_fields.py:63
 msgid "Quotation"
 msgstr ""
 
-#: progresserpnext/custom_fields.py:73 progresserpnext/custom_fields.py:84
+#: progresserpnext/custom_fields.py:74 progresserpnext/custom_fields.py:85
 msgid "Sales Order"
 msgstr ""
 
-#: progresserpnext/custom_fields.py:54
+#: progresserpnext/custom_fields.py:55
 msgid "Section"
 msgstr "Abschnitt"
+
+#: progresserpnext/custom/delivery_note.py:21
+msgid "The rows of this delivery note are linked to different sales orders. Please link only one sales order."
+msgstr "Die Zeilen dieses Lieferscheins sind mit verschiedenen Aufträgen verknüpft. Bitte verknüpfen Sie nur einen Auftrag."
+
+#: progresserpnext/custom/sales_invoice.py:21
+msgid "The rows of this sales invoice are linked to different sales orders. Please link only one sales order."
+msgstr "Die Zeilen dieser Rechnung sind mit verschiedenen Aufträgen verknüpft. Bitte verknüpfen Sie nur einen Auftrag."
+
+#: progresserpnext/custom/sales_order.py:21
+msgid "The rows of this sales order are linked to different quotations. Please link only one quotation."
+msgstr "Die Zeilen dieses Auftrags sind mit verschiedenen Angeboten verknüpft. Bitte verknüpfen Sie nur ein Angebot."
 
