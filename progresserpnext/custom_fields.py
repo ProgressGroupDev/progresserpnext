@@ -36,6 +36,7 @@ def get_custom_fields():
 				"label": _("Parent Line Index"),
 				"insert_after": "item_name",
 				"fieldtype": "Int",
+				"non_negative": 1,
 			},
 			{
 				"fieldname": "custom_is_inclusive",
