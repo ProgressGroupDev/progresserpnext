@@ -1,0 +1,54 @@
+# Translations template for progresserpnext.
+# Copyright (C) 2025 Progress Software Development GmbH
+# This file is distributed under the same license as the progresserpnext project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: progresserpnext VERSION\n"
+"Report-Msgid-Bugs-To: info@progress-psd.com\n"
+"POT-Creation-Date: 2025-01-28 19:52+0053\n"
+"PO-Revision-Date: 2025-01-28 19:52+0053\n"
+"Last-Translator: info@progress-psd.com\n"
+"Language-Team: info@progress-psd.com\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.13.1\n"
+
+#: progresserpnext/custom_fields.py:48
+msgid "Building"
+msgstr ""
+
+#: progresserpnext/custom_fields.py:16
+msgid "Is Container"
+msgstr ""
+
+#: progresserpnext/custom_fields.py:9
+msgid "Is Element"
+msgstr ""
+
+#: progresserpnext/custom_fields.py:42
+msgid "Is Inclusive"
+msgstr ""
+
+#: progresserpnext/custom_fields.py:36
+msgid "Parent Line Index"
+msgstr ""
+
+#: progresserpnext/custom_fields.py:25
+msgid "Project"
+msgstr ""
+
+#: progresserpnext/custom_fields.py:62
+msgid "Quotation"
+msgstr ""
+
+#: progresserpnext/custom_fields.py:73 progresserpnext/custom_fields.py:84
+msgid "Sales Order"
+msgstr ""
+
+#: progresserpnext/custom_fields.py:54
+msgid "Section"
+msgstr ""
+
