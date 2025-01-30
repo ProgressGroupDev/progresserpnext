@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: progresserpnext VERSION\n"
 "Report-Msgid-Bugs-To: info@progress-psd.com\n"
-"POT-Creation-Date: 2025-01-28 21:05+0053\n"
+"POT-Creation-Date: 2025-01-30 20:21+0053\n"
 "PO-Revision-Date: 2025-01-28 19:52+0053\n"
 "Last-Translator: info@progress-psd.com\n"
 "Language: it\n"
@@ -17,6 +17,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.13.1\n"
+
+#: progresserpnext/custom_fields.py:83
+msgid "Ahead Delivery No."
+msgstr "Ahead n. di consegna"
+
+#: progresserpnext/custom_fields.py:100
+msgid "Ahead Invoice Plan ID"
+msgstr "Ahead ID del piano fattura"
 
 #: progresserpnext/custom_fields.py:49
 msgid "Building"
@@ -54,7 +62,7 @@ msgstr ""
 msgid "Quotation"
 msgstr ""
 
-#: progresserpnext/custom_fields.py:74 progresserpnext/custom_fields.py:85
+#: progresserpnext/custom_fields.py:74 progresserpnext/custom_fields.py:91
 msgid "Sales Order"
 msgstr ""
 

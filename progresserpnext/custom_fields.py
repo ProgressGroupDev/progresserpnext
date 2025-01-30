@@ -77,7 +77,14 @@ def get_custom_fields():
 				"options": "Sales Order",
 				"in_standard_filter": 1,
 				"search_index": 1,
-			}
+			},
+			{
+				"fieldname": "custom_ahead_delivery_no",
+				"label": _("Ahead Delivery No."),
+				"insert_after": "custom_sales_order",
+				"fieldtype": "Data",
+				"search_index": 1,
+			},
 		],
 		"Sales Invoice": [
 			{
@@ -88,6 +95,13 @@ def get_custom_fields():
 				"options": "Sales Order",
 				"in_standard_filter": 1,
 				"search_index": 1,
-			}
+			},
+			{
+				"fieldname": "custom_ahead_invoice_plan_id",
+				"label": _("Ahead Invoice Plan ID"),
+				"insert_after": "custom_sales_order",
+				"fieldtype": "Data",
+				"search_index": 1,
+			},
 		],
 	}
