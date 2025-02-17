@@ -19,7 +19,7 @@ bench --site erp.example.org install-app progresserpnext --branch version-15
 ## Features
 
 - This app comes with a number of custom fields which are defined in the `progresserpnext/custom_fields.py` file.
-- The `progresserpnext/dry_run.py` file contains a method to dry-run a document.
+- It provides a custom API endpoint to dry-run an action on a document.
 
     <details>
     <summary>Dry-run API</summary>
