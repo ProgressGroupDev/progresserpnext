@@ -90,13 +90,6 @@ def get_custom_fields():
 				"fieldtype": "Data",
 				"search_index": 1,
 			},
-			{
-				"fieldname": "custom_ahead_delivery_no2",
-				"label": _("Ahead Delivery No2."),
-				"insert_after": "custom_ahead_delivery_no",
-				"fieldtype": "Data",
-				"search_index": 1,
-			},
 		],
 		"Sales Order": [
 			{
