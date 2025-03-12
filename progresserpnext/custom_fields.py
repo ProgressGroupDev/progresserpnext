@@ -86,7 +86,21 @@ def get_custom_fields():
 			{
 				"fieldname": "custom_ahead_delivery_no",
 				"label": _("Ahead Delivery No."),
-				"insert_after": "custom_building",
+				"insert_after": "custom_section",
+				"fieldtype": "Data",
+				"search_index": 1,
+			},
+			{
+				"fieldname": "custom_ahead_delivery_line_no",
+				"label": _("Ahead Delivery Line No."),
+				"insert_after": "custom_ahead_delivery_no",
+				"fieldtype": "Data",
+				"search_index": 1,
+			},
+				{
+				"fieldname": "custom_element_no",
+				"label": _("Element No."),
+				"insert_after": "custom_ahead_delivery_line_no",
 				"fieldtype": "Data",
 				"search_index": 1,
 			},
