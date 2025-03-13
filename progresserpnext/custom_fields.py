@@ -114,6 +114,14 @@ def get_custom_fields():
 				"options": "Quotation",
 				"in_standard_filter": 1,
 				"search_index": 1,
+			},
+						{
+				"fieldname": "custom_valid_till",
+				"label": _("Valid Till"),
+				"insert_after": "custom_quotation",
+				"fieldtype": "Date",
+				"in_standard_filter": 1,
+				"search_index": 1,
 			}
 		],
 		"Delivery Note": [

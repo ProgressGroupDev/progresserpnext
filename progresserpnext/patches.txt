@@ -5,6 +5,4 @@
 [post_model_sync]
 # Patches added in this section will be executed after doctypes are migrated
 execute:frappe.delete_doc_if_exists("Custom Field", "Delivery Note-custom_ahead_delivery_no") #1
-execute:frappe.delete_doc_if_exists("Custom Field", "Delivery Note Item-custom_ahead_delivery_line_no") #1
-execute:frappe.delete_doc_if_exists("Custom Field", "Delivery Note Item-custom_element_no") #1
-execute:from progresserpnext.install import after_install; after_install() #7
+execute:from progresserpnext.install import after_install; after_install() #8
