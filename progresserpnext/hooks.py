@@ -162,6 +162,9 @@ doc_events = {
 		],
 	},
 	"Delivery Note": {
+		"before_validate": [
+			"progresserpnext.custom.delivery_note.before_validate",
+		],
 		"validate": [
 			"progresserpnext.custom.utils.validate_parent_line_idx",
 			"progresserpnext.custom.delivery_note.validate",
