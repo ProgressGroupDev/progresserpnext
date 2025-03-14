@@ -107,18 +107,9 @@ def get_custom_fields():
 		],
 		"Sales Order": [
 			{
-				"fieldname": "custom_quotation",
-				"label": _("Quotation"),
-				"insert_after": "po_no",
-				"fieldtype": "Link",
-				"options": "Quotation",
-				"in_standard_filter": 1,
-				"search_index": 1,
-			},
-						{
 				"fieldname": "custom_valid_till",
 				"label": _("Valid Till"),
-				"insert_after": "custom_quotation",
+				"insert_after": "po_no",
 				"fieldtype": "Date",
 				"in_standard_filter": 1,
 				"search_index": 1,
