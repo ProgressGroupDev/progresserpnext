@@ -409,6 +409,12 @@ bench --site erp.example.org install-app progresserpnext --branch version-15
 
 ## Contributing
 
+### Style
+
+This project uses [pre-commit](https://pre-commit.com/) to enforce consistent code style.
+
+Please install pre-commit and then enable the hooks by running `pre-commit install` in the root of the project.
+
 ### Update translations
 
 Translations live in the `progresserpnext/locale` directory. The file `main.pot` holds all translatable strings. The `<locale>.po` files hold the actual translations.
