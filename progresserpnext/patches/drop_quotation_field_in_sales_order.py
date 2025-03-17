@@ -6,7 +6,7 @@ def execute():
 	frappe.delete_doc_if_exists("Custom Field", "Sales Order-custom_quotation")
 
 	# Drop the column from Sales Order if it exists
-	frappe.db.sql(
+	frappe.db.sql_ddl(
 		"""
         ALTER TABLE `tabSales Order`
         DROP COLUMN IF EXISTS `custom_quotation`;
