@@ -36,16 +36,16 @@ def guess_warehouse(doc: "DeliveryNote"):
 	location of certain items automatically:
 
 	- If the item is marked as “Element” and batch traceable, use the itemno.
-		and the batch no. to find the element on stock. Use the found warehouse
-		in the delivery line. If no stock entry is found, let ERPNext use the
-		default warehouse set in the item master data.
+	    and the batch no. to find the element on stock. Use the found warehouse
+	    in the delivery line. If no stock entry is found, let ERPNext use the
+	        default warehouse set in the item master data.
 	- If the item is marked as “Container” and serialized, use the item no.
-		and the serial no. to find the container on stock. Use the found
-		warehouse in the delivery line. If no stock entry is found, let ERPNext
-		use the default warehouse set in the item master data.
+	    and the serial no. to find the container on stock. Use the found
+	    warehouse in the delivery line. If no stock entry is found, let ERPNext
+	    use the default warehouse set in the item master data.
 	- If the item is not marked as “Element” or “Container,” don't apply these
-		logics. Then the warehouse will be filled by ahead, or if not, the
-		default warehouse of the item is applied automatically by ERPNext
+	    logics. Then the warehouse will be filled by ahead, or if not, the
+	    default warehouse of the item is applied automatically by ERPNext
 	"""
 	if doc.is_return:
 		return
