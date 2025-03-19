@@ -146,10 +146,6 @@ doc_events = {
 	"Sales Order": {
 		"validate": [
 			"progresserpnext.custom.utils.validate_parent_line_idx",
-			"progresserpnext.custom.sales_order.validate",
-		],
-		"before_save": [
-			"progresserpnext.custom.sales_order.before_save",
 		],
 	},
 	"Sales Invoice": {
