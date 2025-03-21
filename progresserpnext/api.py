@@ -16,6 +16,8 @@ def dry_run(doc: dict, action: str) -> dict:
 
 @frappe.whitelist(methods=["GET"])
 def get_sales_order_defaults():
+    frappe.has_permission("Sales Order", "create", throw=True)
+
     user_defaults = frappe.defaults.get_defaults()
     company = user_defaults.get("company")
     currency = user_defaults.get("currency")
