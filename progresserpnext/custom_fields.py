@@ -11,7 +11,7 @@ def get_custom_fields():
 				"fieldtype": "Check",
 				"search_index": 1,
 			},
-						{
+			{
 				"fieldname": "custom_is_delivery_item",
 				"label": _("Is Delivery item"),
 				"insert_after": "custom_is_eto",
@@ -24,7 +24,7 @@ def get_custom_fields():
 				"insert_after": "custom_is_delivery_item",
 				"fieldtype": "Check",
 				"search_index": 1,
-			}
+			},
 		],
 		"Quotation": [
 			{
