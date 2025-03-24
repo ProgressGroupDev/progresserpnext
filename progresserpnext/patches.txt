@@ -7,4 +7,5 @@
 execute:frappe.delete_doc_if_exists("Custom Field", "Delivery Note-custom_ahead_delivery_no") #1
 progresserpnext.patches.drop_ahead_delivery_no_in_delivery_note #3
 progresserpnext.patches.drop_quotation_field_in_sales_order #3
-execute:from progresserpnext.install import after_install; after_install() #13
+progresserpnext.patches.drop_is_element_field_in_item #1
+execute:from progresserpnext.install import after_install; after_install() #14
