@@ -26,9 +26,13 @@ def get_sales_order_defaults():
 
 	default_taxes = get_default_taxes_and_charges("Sales Taxes and Charges Template", "", company)
 
-	return {
-		"company": company,
-		"currency": currency,
-		"price_list": price_list,
-		"sales_taxes_and_charges_template": default_taxes.get("taxes_and_charges"),
-	}
+	frappe.response.update(
+		{
+			"data": {
+				"company": company,
+				"currency": currency,
+				"price_list": price_list,
+				"sales_taxes_and_charges_template": default_taxes.get("taxes_and_charges"),
+			}
+		}
+	)
