@@ -5,16 +5,23 @@ def get_custom_fields():
 	return {
 		"Item": [
 			{
-				"fieldname": "custom_is_element",
-				"label": _("Is Element"),
+				"fieldname": "custom_is_eto",
+				"label": _("Is Engineer to order"),
 				"insert_after": "has_variants",
+				"fieldtype": "Check",
+				"search_index": 1,
+			},
+			{
+				"fieldname": "custom_is_delivery_item",
+				"label": _("Is Delivery item"),
+				"insert_after": "custom_is_eto",
 				"fieldtype": "Check",
 				"search_index": 1,
 			},
 			{
 				"fieldname": "custom_is_container",
 				"label": _("Is Container"),
-				"insert_after": "custom_is_element",
+				"insert_after": "custom_is_delivery_item",
 				"fieldtype": "Check",
 				"search_index": 1,
 			},
