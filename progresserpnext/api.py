@@ -1,5 +1,5 @@
 import frappe
-from erpnext.controllers.accounts_controller import get_default_taxes_and_charges
+from erpnext.controllers.accounts_controller import get_default_taxes_and_charges, update_child_qty_rate
 
 
 @frappe.whitelist(methods=["POST"])
@@ -36,3 +36,19 @@ def get_sales_order_defaults():
 			}
 		}
 	)
+
+
+@frappe.whitelist(methods=["POST"])
+def dry_run_update_items(
+	doc: dict, parent_doctype, trans_items, parent_doctype_name, child_docname="items"
+) -> dict:
+	doc = frappe.get_doc(doc)
+	doc.check_permission()
+
+	update_child_qty_rate(parent_doctype, trans_items, parent_doctype_name, child_docname=child_docname)
+
+	updated_doc = frappe.get_doc(parent_doctype, parent_doctype_name)
+	result = updated_doc.as_dict(convert_dates_to_str=True, no_private_properties=True)
+
+	frappe.db.rollback()
+	return result
