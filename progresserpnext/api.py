@@ -52,3 +52,12 @@ def dry_run_update_items(
 
 	frappe.db.rollback()
 	return result
+
+
+@frappe.whitelist(methods=["POST"])
+def dry_run_calculate_taxes_and_totals(doc: dict) -> dict:
+	doc = frappe.get_doc(doc)
+	doc.check_permission()
+	doc.calculate_taxes_and_totals()
+
+	return doc.as_dict(convert_dates_to_str=True, no_private_properties=True)
