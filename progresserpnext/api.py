@@ -52,3 +52,32 @@ def dry_run_update_items(
 
 	frappe.db.rollback()
 	return result
+
+
+@frappe.whitelist(methods=["POST"])
+def dry_run_no_validation(doc: dict, action: str) -> dict:
+	doc = frappe.get_doc(doc)
+	doc.flags.ignore_permissions = True
+	doc.flags.ignore_mandatory = True
+	doc.flags.ignore_links = True
+	doc.flags.dont_notify = True
+	doc.flags.ignore_on_update = True
+	doc.flags.ignore_validate_update_after_submit = True
+	doc.flags.ignore_version = True
+	doc.flags.no_email = True
+	doc.run_method(action)
+
+	result = doc.as_dict(convert_dates_to_str=True, no_private_properties=True)
+
+	frappe.db.rollback()
+
+	return result
+
+
+@frappe.whitelist(methods=["POST"])
+def dry_run_calculate_taxes_and_totals(doc: dict) -> dict:
+	doc = frappe.get_doc(doc)
+
+	doc.calculate_taxes_and_totals()
+
+	return doc.as_dict(convert_dates_to_str=True, no_private_properties=True)
