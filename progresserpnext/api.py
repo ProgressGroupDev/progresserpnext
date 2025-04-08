@@ -1,6 +1,8 @@
 import frappe
 from erpnext.controllers.accounts_controller import get_default_taxes_and_charges, update_child_qty_rate
 
+from progresserpnext.custom.utils import calculate_sales_valuation_and_margin
+
 
 @frappe.whitelist(methods=["POST"])
 def dry_run(doc: dict, action: str) -> dict:
@@ -59,5 +61,6 @@ def dry_run_calculate_taxes_and_totals(doc: dict) -> dict:
 	doc = frappe.get_doc(doc)
 	doc.check_permission()
 	doc.calculate_taxes_and_totals()
+	calculate_sales_valuation_and_margin(doc, "after_calculate_taxes_and_totals")
 
 	return doc.as_dict(convert_dates_to_str=True, no_private_properties=True)

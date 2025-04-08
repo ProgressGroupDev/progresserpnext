@@ -25,6 +25,20 @@ def get_custom_fields():
 				"fieldtype": "Check",
 				"search_index": 1,
 			},
+			{
+				"fieldname": "custom_use_standard_price",
+				"label": _("Use Standard Price in Sales"),
+				"insert_after": "custom_is_container",
+				"fieldtype": "Check",
+				"search_index": 1,
+			},
+			{
+				"fieldname": "custom_standard_valuation_rate",
+				"label": _("Standard Valuation Rate in Sales"),
+				"insert_after": "custom_use_standard_price",
+				"fieldtype": "Float",
+				"search_index": 1,
+			},
 		],
 		"Quotation": [
 			{
@@ -35,7 +49,23 @@ def get_custom_fields():
 				"options": "Project",
 				"in_standard_filter": 1,
 				"search_index": 1,
-			}
+			},
+			{
+				"fieldname": "custom_margin_percent",
+				"label": _("Margin %"),
+				"insert_after": "net_total",
+				"fieldtype": "Percent",
+				"search_index": 1,
+				"read_only": 1,
+			},
+			{
+				"fieldname": "custom_margin_abs",
+				"label": _("Margin Abs."),
+				"insert_after": "custom_margin_percent",
+				"fieldtype": "Currency",
+				"search_index": 1,
+				"read_only": 1,
+			},
 		],
 		("Quotation Item", "Sales Order Item", "Sales Invoice Item"): [
 			{
@@ -62,6 +92,30 @@ def get_custom_fields():
 				"label": _("Section"),
 				"insert_after": "custom_building",
 				"fieldtype": "Data",
+			},
+			{
+				"fieldname": "custom_sales_valuation_rate",
+				"label": _("Sales Valuation Rate"),
+				"insert_after": "custom_section",
+				"fieldtype": "Float",
+				"search_index": 1,
+				"read_only": 1,
+			},
+			{
+				"fieldname": "custom_margin_percent",
+				"label": _("Margin %"),
+				"insert_after": "custom_sales_valuation_rate",
+				"fieldtype": "Percent",
+				"search_index": 1,
+				"read_only": 1,
+			},
+			{
+				"fieldname": "custom_margin_abs",
+				"label": _("Margin Abs."),
+				"insert_after": "custom_margin_percent",
+				"fieldtype": "Currency",
+				"search_index": 1,
+				"read_only": 1,
 			},
 		],
 		"Delivery Note Item": [
@@ -120,7 +174,23 @@ def get_custom_fields():
 				"fieldtype": "Date",
 				"in_standard_filter": 1,
 				"search_index": 1,
-			}
+			},
+			{
+				"fieldname": "custom_margin_percent",
+				"label": _("Margin %"),
+				"insert_after": "net_total",
+				"fieldtype": "Percent",
+				"search_index": 1,
+				"read_only": 1,
+			},
+			{
+				"fieldname": "custom_margin_abs",
+				"label": _("Margin Abs."),
+				"insert_after": "custom_margin_percent",
+				"fieldtype": "Currency",
+				"search_index": 1,
+				"read_only": 1,
+			},
 		],
 		"Delivery Note": [
 			{
@@ -149,6 +219,22 @@ def get_custom_fields():
 				"insert_after": "custom_sales_order",
 				"fieldtype": "Data",
 				"search_index": 1,
+			},
+			{
+				"fieldname": "custom_margin_percent",
+				"label": _("Margin %"),
+				"insert_after": "net_total",
+				"fieldtype": "Percent",
+				"search_index": 1,
+				"read_only": 1,
+			},
+			{
+				"fieldname": "custom_margin_abs",
+				"label": _("Margin Abs."),
+				"insert_after": "custom_margin_percent",
+				"fieldtype": "Currency",
+				"search_index": 1,
+				"read_only": 1,
 			},
 		],
 	}

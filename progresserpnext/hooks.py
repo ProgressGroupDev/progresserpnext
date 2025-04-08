@@ -142,10 +142,16 @@ doc_events = {
 		"validate": [
 			"progresserpnext.custom.utils.validate_parent_line_idx",
 		],
+		"before_save": [
+			"progresserpnext.custom.utils.calculate_sales_valuation_and_margin",
+		],
 	},
 	"Sales Order": {
 		"validate": [
 			"progresserpnext.custom.utils.validate_parent_line_idx",
+		],
+		"before_save": [
+			"progresserpnext.custom.utils.calculate_sales_valuation_and_margin",
 		],
 	},
 	"Sales Invoice": {
@@ -155,6 +161,7 @@ doc_events = {
 		],
 		"before_save": [
 			"progresserpnext.custom.sales_invoice.before_save",
+			"progresserpnext.custom.utils.calculate_sales_valuation_and_margin",
 		],
 	},
 	"Delivery Note": {
