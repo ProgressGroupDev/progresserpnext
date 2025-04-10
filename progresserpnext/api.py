@@ -104,4 +104,6 @@ def update_submitted_sales_order(
 
 	result = updated_doc.as_dict(convert_dates_to_str=True, no_private_properties=True)
 
+	frappe.response.update({"data": result})
+
 	return result
