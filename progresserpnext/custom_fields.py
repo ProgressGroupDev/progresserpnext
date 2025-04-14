@@ -97,7 +97,7 @@ def get_custom_fields():
 				"fieldname": "custom_sales_valuation_rate",
 				"label": _("Sales Valuation Rate"),
 				"insert_after": "custom_section",
-				"fieldtype": "Float",
+				"fieldtype": "Currency",
 				"search_index": 1,
 				"read_only": 1,
 			},

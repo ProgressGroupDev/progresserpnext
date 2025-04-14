@@ -1,6 +1,7 @@
 from typing import TYPE_CHECKING
 
 import frappe
+from erpnext.stock.get_item_details import get_valuation_rate
 from frappe import _
 from frappe.utils.data import flt
 
@@ -21,7 +22,11 @@ def calculate_sales_valuation_and_margin(doc: "SellingController", event: str):
 		if use_standard_price:
 			item.custom_sales_valuation_rate = flt(standard_valuation_rate)
 		else:
-			item.custom_sales_valuation_rate = flt(valuation_rate)
+			valuation_data = get_valuation_rate(
+				item_code=item.item_code, company=doc.company, warehouse=item.warehouse
+			)
+
+			item.custom_sales_valuation_rate = flt(valuation_data.get("valuation_rate") or 0.0)
 
 	calculate_line_margins(doc)
 
@@ -43,7 +48,7 @@ def calculate_line_margins(doc: "SellingController"):
 			if sub_item.custom_parent_line_idx == item.idx and sub_item.custom_is_inclusive
 		]
 
-		total_cost = (item.custom_sales_valuation_rate * item.qty) + sum(
+		total_cost = (item.custom_sales_valuation_rate * item.stock_qty) + sum(
 			sub.custom_sales_valuation_rate * sub.qty for sub in inclusive_items
 		)
 
@@ -60,7 +65,7 @@ def calculate_header_margins(doc: "SellingController"):
 
 	cost_sum = 0
 	for item in doc.items:
-		cost_sum += item.custom_sales_valuation_rate * item.qty
+		cost_sum += item.custom_sales_valuation_rate * item.stock_qty
 
 	doc.custom_margin_percent = (doc.net_total - cost_sum) / doc.net_total * 100 if doc.net_total != 0 else 0
 
