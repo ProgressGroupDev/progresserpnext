@@ -7,7 +7,7 @@ def get_custom_fields():
 			{
 				"fieldname": "custom_use_standard_price",
 				"label": _("Use Standard Price in Sales"),
-				"insert_after": "custom_is_container",
+				"insert_after": "has_variants",
 				"fieldtype": "Check",
 				"search_index": 1,
 			},
