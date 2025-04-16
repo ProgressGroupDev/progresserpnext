@@ -7,7 +7,6 @@ def execute():
 	frappe.delete_doc_if_exists("Custom Field", "Item-custom_is_delivery_item")
 	frappe.delete_doc_if_exists("Custom Field", "Item-custom_is_container")
 
-
 	# Drop the columns if they exist
 	frappe.db.sql_ddl(
 		"""
@@ -29,4 +28,3 @@ def execute():
         DROP COLUMN IF EXISTS `custom_is_container`;
         """
 	)
-
