@@ -49,7 +49,7 @@ def calculate_line_margins(doc: "SellingController"):
 		]
 
 		total_cost = (item.custom_sales_valuation_rate * item.stock_qty) + sum(
-			sub.custom_sales_valuation_rate * sub.qty for sub in inclusive_items
+			sub.custom_sales_valuation_rate * sub.stock_qty for sub in inclusive_items
 		)
 
 		item.custom_margin_abs = item.amount - total_cost
