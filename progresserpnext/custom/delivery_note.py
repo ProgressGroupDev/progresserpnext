@@ -35,7 +35,7 @@ def guess_warehouse(doc: "DeliveryNote"):
 	"""When new item lines are added to a delivery note, prefill the current storage
 	location of certain items automatically:
 
-	- If the item is marked as “Element” and batch traceable, use the itemno.
+	- If the item is marked as “ETO” and batch traceable, use the itemno.
 	    and the batch no. to find the element on stock. Use the found warehouse
 	    in the delivery line. If no stock entry is found, let ERPNext use the
 	        default warehouse set in the item master data.
@@ -43,7 +43,7 @@ def guess_warehouse(doc: "DeliveryNote"):
 	    and the serial no. to find the container on stock. Use the found
 	    warehouse in the delivery line. If no stock entry is found, let ERPNext
 	    use the default warehouse set in the item master data.
-	- If the item is not marked as “Element” or “Container,” don't apply these
+	- If the item is not marked as "ETO” or “Container,” don't apply these
 	    logics. Then the warehouse will be filled by ahead, or if not, the
 	    default warehouse of the item is applied automatically by ERPNext
 	"""
@@ -58,11 +58,11 @@ def guess_warehouse(doc: "DeliveryNote"):
 			continue
 
 		item = frappe.get_doc("Item", line_item.item_code)
-		if not item.custom_is_element and not item.custom_is_container:
-			# Item is neither element nor container, warehouse will be filled by ahead
+		if not item.custom_is_eto and not item.custom_is_container:
+			# Item is neither eto nor container, warehouse will be filled by ahead
 			continue
 
-		if item.custom_is_element and item.has_batch_no and line_item.batch_no:
+		if item.custom_is_eto and item.has_batch_no and line_item.batch_no:
 			batches = get_available_batches(
 				frappe._dict(
 					posting_date=doc.posting_date,
