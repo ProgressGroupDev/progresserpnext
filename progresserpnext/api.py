@@ -61,9 +61,9 @@ def dry_run_update_items(
 
 @frappe.whitelist(methods=["POST"])
 def dry_run_calculate_taxes_and_totals(doc: dict) -> dict:
-	if not doc.get("taxes") and doc.get("name"):
-		existing_doc = frappe.get_doc("Sales Order", doc["name"])
-		doc["taxes"] = [t.as_dict() for t in existing_doc.taxes]
+	if not doc.get("taxes") and doc.get("name") and doc.get("doctype"):
+		existing_doc = frappe.get_doc(doc["doctype"], doc["name"])
+		doc["taxes"] = [t.as_dict() for t in existing_doc.get("taxes", [])]
 
 	doc = frappe.get_doc(doc)
 
