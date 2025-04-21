@@ -26,6 +26,8 @@ def get_data(filters):
 			"stock_value",
 		],
 	):
+		bin["serial_no"] = "TOTAL"
+		bin["batch_no"] = "TOTAL"
 		results.append(bin)
 		has_serial_no, has_batch_no = frappe.db.get_value(
 			"Item", bin.item_code, ["has_serial_no", "has_batch_no"]
