@@ -40,6 +40,7 @@ def get_data(filters):
 				[
 					{
 						"indent": 1,
+						"warehouse": bin.warehouse,
 						"serial_no": serial_no.serial_no,
 						"actual_qty": 1,
 						"stock_uom": bin.stock_uom,
@@ -61,6 +62,7 @@ def get_data(filters):
 				[
 					{
 						"indent": 1,
+						"warehouse": bin.warehouse,
 						"batch_no": batch.batch_no,
 						"actual_qty": batch.qty,
 						"stock_uom": bin.stock_uom,
