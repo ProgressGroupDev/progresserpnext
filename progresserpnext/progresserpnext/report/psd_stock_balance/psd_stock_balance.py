@@ -34,7 +34,7 @@ def get_data(filters):
 			serial_nos = frappe.get_all(
 				"Serial No",
 				filters={"item_code": bin.item_code, "warehouse": bin.warehouse, "status": "Active"},
-				fields=["serial_no"],
+				fields=["serial_no", "batch_no"],
 			)
 			results.extend(
 				[
@@ -42,6 +42,7 @@ def get_data(filters):
 						"indent": 1,
 						"warehouse": bin.warehouse,
 						"serial_no": serial_no.serial_no,
+						"batch_no": serial_no.batch_no,
 						"actual_qty": 1,
 						"stock_uom": bin.stock_uom,
 						"stock_value": flt(bin.stock_value / bin.actual_qty, 2),
@@ -50,7 +51,7 @@ def get_data(filters):
 				]
 			)
 
-		if has_batch_no:
+		if has_batch_no and not has_serial_no:
 			batch_qty = get_auto_batch_nos(
 				kwargs=frappe._dict(
 					warehouse=bin.warehouse,
