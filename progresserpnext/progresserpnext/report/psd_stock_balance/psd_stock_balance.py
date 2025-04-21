@@ -45,7 +45,7 @@ def get_data(filters):
 						"batch_no": serial_no.batch_no,
 						"actual_qty": 1,
 						"stock_uom": bin.stock_uom,
-						"stock_value": flt(bin.stock_value / bin.actual_qty, 2),
+						"stock_value": flt(bin.stock_value / bin.actual_qty, 2) if bin.actual_qty else 0,
 					}
 					for serial_no in serial_nos
 				]
@@ -67,7 +67,9 @@ def get_data(filters):
 						"batch_no": batch.batch_no,
 						"actual_qty": batch.qty,
 						"stock_uom": bin.stock_uom,
-						"stock_value": flt(bin.stock_value / bin.actual_qty * batch.qty, 2),
+						"stock_value": (
+							flt(bin.stock_value / bin.actual_qty * batch.qty, 2) if bin.actual_qty else 0
+						),
 					}
 					for batch in batch_qty
 				]
