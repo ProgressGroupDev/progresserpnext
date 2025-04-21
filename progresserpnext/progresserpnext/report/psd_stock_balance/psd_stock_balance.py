@@ -77,13 +77,13 @@ def get_data(filters):
 
 
 def get_columns(filters):
-	return [
+	columns = [
 		{
 			"fieldname": "item_code",
 			"fieldtype": "Link",
 			"options": "Item",
 			"label": _("Item Code"),
-			"width": 180,
+			"width": 200,
 		},
 		{
 			"fieldname": "serial_no",
@@ -126,3 +126,11 @@ def get_columns(filters):
 			"width": 120,
 		},
 	]
+
+	if filters.get("warehouse"):
+		columns = [column for column in columns if column["fieldname"] != "warehouse"]
+
+	if filters.get("item_code"):
+		columns = [column for column in columns if column["fieldname"] != "item_code"]
+
+	return columns
