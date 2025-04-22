@@ -26,9 +26,6 @@ def get_data(filters):
 			"stock_value",
 		],
 	):
-		bin["serial_no"] = "TOTAL"
-		bin["batch_no"] = "TOTAL"
-		results.append(bin)
 		has_serial_no, has_batch_no = frappe.db.get_value(
 			"Item", bin.item_code, ["has_serial_no", "has_batch_no"]
 		)
@@ -41,7 +38,6 @@ def get_data(filters):
 			results.extend(
 				[
 					{
-						"indent": 1,
 						"item_code": bin.item_code,
 						"warehouse": bin.warehouse,
 						"serial_no": serial_no.serial_no,
@@ -53,6 +49,7 @@ def get_data(filters):
 					for serial_no in serial_nos
 				]
 			)
+			bin["actual_qty"] -= len(serial_nos)
 
 		if has_batch_no and not has_serial_no:
 			batch_qty = get_auto_batch_nos(
@@ -65,7 +62,6 @@ def get_data(filters):
 			results.extend(
 				[
 					{
-						"indent": 1,
 						"item_code": bin.item_code,
 						"warehouse": bin.warehouse,
 						"batch_no": batch.batch_no,
@@ -78,6 +74,10 @@ def get_data(filters):
 					for batch in batch_qty
 				]
 			)
+			bin["actual_qty"] -= sum(batch.qty for batch in batch_qty)
+
+		if bin["actual_qty"]:
+			results.append(bin)
 
 	return results
 
