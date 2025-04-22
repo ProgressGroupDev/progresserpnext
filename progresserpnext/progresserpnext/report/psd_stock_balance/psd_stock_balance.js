@@ -10,10 +10,29 @@ frappe.query_reports["PSD Stock Balance"] = {
 			options: "Item",
 		},
 		{
+			fieldname: "company",
+			label: "Company",
+			fieldtype: "Link",
+			options: "Company",
+		},
+		{
 			fieldname: "warehouse",
 			label: "Warehouse",
 			fieldtype: "Link",
 			options: "Warehouse",
+			get_query: () => {
+				const company = frappe.query_report.get_filter_value("company");
+
+				if (!company) {
+					return {};
+				}
+
+				return {
+					filters: {
+						company: company,
+					},
+				};
+			},
 		},
 	],
 };

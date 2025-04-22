@@ -13,26 +13,43 @@ def execute(filters: dict):
 	return get_columns(filters.copy()), get_data(filters.copy())
 
 
-def set_group_warehouse_filter(filters: dict) -> None:
-	"""
-	Change the filter operator from '=' to 'descendants of (inclusive)', if the
-	warehouse is a group warehouse.
-	"""
-	warehouse = filters.get("warehouse")
-	if not warehouse:
-		return
+def get_filters_list(filters: dict) -> list[list]:
+	"""Turn the filters dict into a list.
 
-	if frappe.db.get_value("Warehouse", warehouse, "is_group"):
-		filters["warehouse"] = ("descendants of (inclusive)", warehouse)
+	The conversion is necessary to allow multiple filters on warehouse.
+
+	- If the warehouse in the dict is a group warehouse, add the 'descendants of (inclusive)'
+	filter to the list. Else, add the '=' filter.
+	- If an item code filter is present in the dict, add it to the list.
+	- If a company filter is present in the dict, add a filter to the list to only include
+	warehouses for that company. The company filter itself is not added to the list.
+	"""
+	filters_list = []
+
+	warehouse = filters.get("warehouse")
+	if warehouse:
+		if frappe.db.get_value("Warehouse", warehouse, "is_group"):
+			filters_list.append(["warehouse", "descendants of (inclusive)", warehouse])
+		else:
+			filters_list.append(["warehouse", "=", warehouse])
+
+	item = filters.get("item_code")
+	if item:
+		filters_list.append(["item_code", "=", item])
+
+	company = filters.get("company")
+	if company:
+		warehouses = frappe.db.get_all("Warehouse", filters={"company": company}, pluck="name", distinct=True)
+		filters_list.append(["warehouse", "in", warehouses])
+
+	return filters_list
 
 
 def get_data(filters: dict) -> list[dict]:
-	set_group_warehouse_filter(filters)
-
 	results = []
 	for bin in frappe.get_all(
 		"Bin",
-		filters=filters,
+		filters=get_filters_list(filters),
 		fields=[
 			"item_code",
 			"warehouse",
