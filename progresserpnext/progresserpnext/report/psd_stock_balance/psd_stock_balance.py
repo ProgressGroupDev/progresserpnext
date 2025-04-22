@@ -9,11 +9,26 @@ from frappe import _
 from frappe.utils.data import flt
 
 
-def execute(filters=None):
-	return get_columns(filters), get_data(filters)
+def execute(filters: dict):
+	return get_columns(filters.copy()), get_data(filters.copy())
 
 
-def get_data(filters):
+def set_group_warehouse_filter(filters: dict) -> None:
+	"""
+	Change the filter operator from '=' to 'descendants of (inclusive)', if the
+	warehouse is a group warehouse.
+	"""
+	warehouse = filters.get("warehouse")
+	if not warehouse:
+		return
+
+	if frappe.db.get_value("Warehouse", warehouse, "is_group"):
+		filters["warehouse"] = ("descendants of (inclusive)", warehouse)
+
+
+def get_data(filters: dict) -> list[dict]:
+	set_group_warehouse_filter(filters)
+
 	results = []
 	for bin in frappe.get_all(
 		"Bin",
@@ -82,7 +97,7 @@ def get_data(filters):
 	return results
 
 
-def get_columns(filters):
+def get_columns(filters: dict):
 	return [
 		{
 			"fieldname": "item_code",
