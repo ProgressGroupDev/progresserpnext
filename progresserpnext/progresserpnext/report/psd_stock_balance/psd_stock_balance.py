@@ -58,9 +58,20 @@ def get_data(filters: dict) -> list[dict]:
 			"stock_value",
 		],
 	):
+
+		# Retrieve item name, company and parent warehouse
+		item_name = frappe.db.get_value("Item", bin.item_code, "item_name")
+		company = frappe.db.get_value("Warehouse", bin.warehouse, "company")
+		parent_warehouse = frappe.db.get_value("Warehouse", bin.warehouse, "parent_warehouse")  # Obtain parent warehouse
+
 		has_serial_no, has_batch_no = frappe.db.get_value(
 			"Item", bin.item_code, ["has_serial_no", "has_batch_no"]
 		)
+
+		# Default values for batch_no and serial_no
+		serial_no_value = None
+		batch_no_value = None
+
 		if has_serial_no:
 			serial_nos = frappe.get_all(
 				"Serial No",
@@ -71,6 +82,9 @@ def get_data(filters: dict) -> list[dict]:
 				[
 					{
 						"item_code": bin.item_code,
+						"item_name": item_name,
+						"company": company,
+						"parent_warehouse": parent_warehouse,
 						"warehouse": bin.warehouse,
 						"serial_no": serial_no.serial_no,
 						"batch_no": serial_no.batch_no,
@@ -95,7 +109,11 @@ def get_data(filters: dict) -> list[dict]:
 				[
 					{
 						"item_code": bin.item_code,
+						"item_name": item_name,
+						"company": company,
+                        "parent_warehouse": parent_warehouse,
 						"warehouse": bin.warehouse,
+						"serial_no": serial_no_value,
 						"batch_no": batch.batch_no,
 						"actual_qty": batch.qty,
 						"stock_uom": bin.stock_uom,
@@ -109,7 +127,7 @@ def get_data(filters: dict) -> list[dict]:
 			bin["actual_qty"] -= sum(batch.qty for batch in batch_qty)
 
 		if bin["actual_qty"]:
-			results.append(bin)
+			results.append({**bin, "item_name": item_name, "company": company, "parent_warehouse": parent_warehouse, "serial_no": serial_no_value, "batch_no": batch_no_value})  # Adding item_name, company and parent warehouse
 
 	return results
 
@@ -121,6 +139,26 @@ def get_columns(filters: dict):
 			"fieldtype": "Link",
 			"options": "Item",
 			"label": _("Item Code"),
+			"width": 120,
+		},
+		{
+			"fieldname": "item_name",
+			"fieldtype": "Data",
+			"label": _("Item Name"),
+			"width": 180,
+		},
+		{
+			"fieldname": "company",
+			"fieldtype": "Link",
+			"options": "Company",
+			"label": _("Company"),
+			"width": 120,
+		},
+		{
+			"fieldname": "parent_warehouse",
+			"fieldtype": "Link",
+			"options": "Warehouse",
+			"label": _("Parent Warehouse"),
 			"width": 180,
 		},
 		{
