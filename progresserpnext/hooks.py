@@ -133,6 +133,11 @@ after_install = "progresserpnext.install.after_install"
 # 	"ToDo": "custom_app.overrides.CustomToDo"
 # }
 
+override_doctype_class = {
+	"Transaction Deletion Record": "progresserpnext.custom.transaction_deletion_record.CustomTransactionDeletionRecord"
+}
+
+
 # Document Events
 # ---------------
 # Hook on document methods and events
@@ -210,6 +215,13 @@ doc_events = {
 # override_whitelisted_methods = {
 # 	"frappe.desk.doctype.event.event.get_events": "progresserpnext.event.get_events"
 # }
+
+override_whitelisted_methods = {
+	"erpnext.setup.doctype.transaction_deletion_record.transaction_deletion_record.get_doctypes_to_be_ignored": "progresserpnext.custom.transaction_deletion_record.get_doctypes_to_be_ignored",
+	"erpnext.setup.doctype.transaction_deletion_record.transaction_deletion_record.validate": "progresserpnext.custom.transaction_deletion_record.validate",
+	"erpnext.setup.doctype.transaction_deletion_record.transaction_deletion_record.validate_doctypes_to_be_ignored": "progresserpnext.custom.transaction_deletion_record.validate_doctypes_to_be_ignored",
+}
+
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
