@@ -133,10 +133,6 @@ after_install = "progresserpnext.install.after_install"
 # 	"ToDo": "custom_app.overrides.CustomToDo"
 # }
 
-override_doctype_class = {
-	"Transaction Deletion Record": "progresserpnext.custom.transaction_deletion_record.CustomTransactionDeletionRecord"
-}
-
 
 # Document Events
 # ---------------
@@ -217,9 +213,7 @@ doc_events = {
 # }
 
 override_whitelisted_methods = {
-	"erpnext.setup.doctype.transaction_deletion_record.transaction_deletion_record.get_doctypes_to_be_ignored": "progresserpnext.custom.transaction_deletion_record.get_doctypes_to_be_ignored",
-	"erpnext.setup.doctype.transaction_deletion_record.transaction_deletion_record.validate": "progresserpnext.custom.transaction_deletion_record.validate",
-	"erpnext.setup.doctype.transaction_deletion_record.transaction_deletion_record.validate_doctypes_to_be_ignored": "progresserpnext.custom.transaction_deletion_record.validate_doctypes_to_be_ignored",
+	"erpnext.setup.doctype.transaction_deletion_record.transaction_deletion_record.get_doctypes_to_be_ignored": "progresserpnext.custom.transaction_deletion_record.get_doctypes_to_be_ignored"
 }
 
 #
@@ -286,3 +280,6 @@ override_whitelisted_methods = {
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
+
+# data to be ignored when deleting company transactions
+company_data_to_be_ignored = ["Shipping Rule", "Department"]

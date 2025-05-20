@@ -1,8 +1,4 @@
 import frappe
-from erpnext.setup.doctype.transaction_deletion_record.transaction_deletion_record import (
-	TransactionDeletionRecord,
-)
-from frappe.model.document import Document
 
 
 @frappe.whitelist()
@@ -25,18 +21,8 @@ def get_doctypes_to_be_ignored():
 		"Item Default",
 		"Customer",
 		"Supplier",
-		"Shipping Rule",
-		"Department",
 	]
 
 	doctypes_to_be_ignored.extend(frappe.get_hooks("company_data_to_be_ignored") or [])
 
 	return doctypes_to_be_ignored
-
-
-class CustomTransactionDeletionRecord(TransactionDeletionRecord):
-	def validate(self):
-		pass
-
-	def validate_doctypes_to_be_ignored(self):
-		pass
